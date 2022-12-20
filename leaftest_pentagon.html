@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Minimal LandScan USA tile overlay</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
+  <style>
+    img.leaflet-tile{image-rendering: pixelated;} 
+    body {padding: 0; margin: 0;}
+    html, body, #map {height: 100%;width: 100%;}
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+    var map = L.map('map').setView([38.87, -77.055],16);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+    L.tileLayer('https://landscan.ornl.gov/tiles/usa/2021/conus/day/{z}/{x}/{-y}.png', {
+    maxZoom: 19, tms: true, opacity: 0.5, maxNativeZoom: 11,
+    attribution: '<a href="https://landscan.ornl.gov">LandScan</a>'
+  }).addTo(map);
+  </script>
+</body>
+</html>  
